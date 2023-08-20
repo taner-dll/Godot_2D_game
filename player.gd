@@ -35,10 +35,8 @@ func _process(delta):
 	# Now that we have a movement direction,
 	# we can update the player's position.
 	
-	#_process() işlevindeki delta parametresi, 
-	# önceki çerçevenin tamamlanması için geçen süre olan 
-	# çerçeve uzunluğunu ifade eder. 
-	# Bu değeri kullanmak, kare hızı değişse bile 
+	#_process() işlevindeki delta parametresini 
+	# kullanmak, kare hızı değişse bile 
 	# hareketinizin tutarlı kalmasını sağlar.
 	
 	position += velocity * delta
@@ -47,9 +45,34 @@ func _process(delta):
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 	
+		
+	# CHOOSING ANIMATIONS
+	
+	# We have the "walk" animation, which shows the player walking to the right. 
+	# This animation should be flipped horizontally 
+	# using the flip_h property for left movement. 
+	# We also have the "up" animation, which should be flipped vertically 
+	# with flip_v for downward movement.
+	
+	if velocity.x != 0:
+		$AnimatedSprite2D.animation = "walk"
+		$AnimatedSprite2D.flip_v = false
+		
+		# karakterin sağa gitme durumunda "walk" animasyonu default haliyle gelir
+		# yatay hız negatifse (sola gidiyorsa) walk animasyonunu flip_h değerini true yapmalıyız
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+	elif velocity.y != 0:
+		$AnimatedSprite2D.animation = "up"
+		
+		# dikey hız pozitifse walk animasyonunu flip_v değerini true yap
+		$AnimatedSprite2D.flip_v = velocity.y > 0
+		
+		
+	# the player will be hidden when the game starts
+	hide()
 	
 	
 	
-		
-		
-		
+	
+	
+
