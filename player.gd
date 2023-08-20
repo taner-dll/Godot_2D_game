@@ -20,15 +20,36 @@ func _process(delta):
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
 	if Input.is_action_pressed("move_up"):
-		velocity.y += 1
-	if Input.is_action_pressed("move_down"):
 		velocity.y -= 1
+	if Input.is_action_pressed("move_down"):
+		velocity.y += 1
 		
 		
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-
+		$AnimatedSprite2D.play()
+	else:
+		$AnimatedSprite2D.stop()
 		
-		 
+	
+	# Now that we have a movement direction,
+	# we can update the player's position.
+	
+	#_process() işlevindeki delta parametresi, 
+	# önceki çerçevenin tamamlanması için geçen süre olan 
+	# çerçeve uzunluğunu ifade eder. 
+	# Bu değeri kullanmak, kare hızı değişse bile 
+	# hareketinizin tutarlı kalmasını sağlar.
+	
+	position += velocity * delta
+	
+	# clamping (kelepçeleme) ile ekran dışarısına çıkmayı önle
+	position = position.clamp(Vector2.ZERO, screen_size)
 	
 	
+	
+	
+	
+		
+		
+		
