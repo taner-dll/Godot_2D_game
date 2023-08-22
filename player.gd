@@ -1,5 +1,7 @@
 extends Area2D
 
+signal hit
+
 @export var speed = 400 # how fast the player move
 var screen_size # size of the game screen
 
@@ -72,6 +74,23 @@ func _process(delta):
 	hide()
 	
 	
+	# PREPARING FOR COLLISIONS
+	
+func _on_body_entered(body):
+	hide() # Player disappears after being hit.
+	hit.emit()
+	# Must be deferred as we can't change physics properties on a physics callback.
+	# Bir düşman oyuncuya her vurduğunda, sinyal yayılacaktır. 
+	# Vuruş sinyalini birden fazla tetiklememek için 
+	# oyuncunun çarpışmasını devre dışı bırakmamız gerekiyor.
+	$CollisionShape2D.set_deferred("disabled", true)
+	
+	
+func start(pos):
+	# yeni bir oyuna başlarken oyuncuyu sıfırla
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
 	
 	
 	
