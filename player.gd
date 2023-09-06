@@ -1,3 +1,7 @@
+# With Area2D we can detect objects that overlap or run into the player. 
+# Change the node's name to "Player" by double-clicking on it. 
+# Now that we've set the scene's root node, 
+# we can add additional nodes to give it more functionality.
 extends Area2D
 
 signal hit
@@ -70,11 +74,11 @@ func _process(delta):
 		$AnimatedSprite2D.flip_v = velocity.y > 0
 		
 		
-	# the player will be hidden when the game starts
-	hide()
+# the player will be hidden when the game starts
+#hide()
 	
 	
-	# PREPARING FOR COLLISIONS
+# PREPARING FOR COLLISIONS
 	
 func _on_body_entered(body):
 	hide() # Player disappears after being hit.
