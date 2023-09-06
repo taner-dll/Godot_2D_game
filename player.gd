@@ -4,6 +4,7 @@
 # we can add additional nodes to give it more functionality.
 extends Area2D
 
+# define hit signal for emitting each collisions 
 signal hit
 
 @export var speed = 400 # how fast the player move
