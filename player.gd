@@ -91,6 +91,8 @@ func _on_body_entered(body):
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 	
+# The last piece is to add a function 
+# we can call to reset the player when starting a new game.	
 func start(pos):
 	# yeni bir oyuna başlarken oyuncuyu sıfırla
 	position = pos

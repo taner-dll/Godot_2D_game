@@ -45,7 +45,6 @@ sprite_frames = SubResource("SpriteFrames_ad7jo")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_hu0qc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
