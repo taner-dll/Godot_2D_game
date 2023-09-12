@@ -46,7 +46,8 @@ func _process(delta):
 	# kullanmak, kare hızı değişse bile 
 	# hareketinizin tutarlı kalmasını sağlar.
 	
-	position += velocity * delta
+	# fps eşitlemek için hız x delta
+	position += velocity * delta 
 	
 	# clamping (kelepçeleme) ile ekran dışarısına çıkmayı önle
 	position = position.clamp(Vector2.ZERO, screen_size)

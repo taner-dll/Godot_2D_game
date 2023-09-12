@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxwsll7howpcw"]
+
+[ext_resource type="Texture2D" uid="uid://41d0stllvegl" path="res://art/enemyFlyingAlt_1.png" id="1_fjnhf"]
+[ext_resource type="Script" path="res://Mob.gd" id="1_p3l52"]
+[ext_resource type="Texture2D" uid="uid://dghrqp157duva" path="res://art/enemyFlyingAlt_2.png" id="2_2vb6w"]
+[ext_resource type="Texture2D" uid="uid://b875u2h2li12k" path="res://art/enemySwimming_1.png" id="3_yschk"]
+[ext_resource type="Texture2D" uid="uid://cwxw2e57hwijr" path="res://art/enemySwimming_2.png" id="4_csijg"]
+[ext_resource type="Texture2D" uid="uid://b6mkoi7rov6nj" path="res://art/enemyWalking_1.png" id="5_6ul05"]
+[ext_resource type="Texture2D" uid="uid://85lh025wjw61" path="res://art/enemyWalking_2.png" id="6_s14ns"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7vk7w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fjnhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2vb6w")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yschk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_csijg")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6ul05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s14ns")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_20w0p"]
+radius = 35.0
+height = 96.0
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_p3l52")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_7vk7w")
+animation = &"walk"
+frame = 1
+frame_progress = 0.471257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_20w0p")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4, 1)
+scale = Vector2(1.5, 1.6)
