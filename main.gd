@@ -11,6 +11,8 @@ func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
+	$Music.stop()
+	$DeathSound.play()
 
 
 # oyun başlarken yapılacaklar
@@ -19,8 +21,9 @@ func new_game():
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
-	$HUD.show_message("Get Ready")
+	$HUD.show_message("Hazır!")
 	get_tree().call_group("mobs", "queue_free")
+	$Music.play()
 
 	
 	
