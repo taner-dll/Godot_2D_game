@@ -73,7 +73,7 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "up"
 		
 		# dikey hız pozitifse walk animasyonunu flip_v değerini true yap
-		$AnimatedSprite2D.flip_v = velocity.y > 0
+		#$AnimatedSprite2D.flip_v = velocity.y > 0
 		
 		
 # the player will be hidden when the game starts
