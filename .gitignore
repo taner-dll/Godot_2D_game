@@ -1,2 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
+kuki.apk
+kuki.apk.idsig
